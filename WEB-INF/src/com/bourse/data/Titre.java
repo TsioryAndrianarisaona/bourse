@@ -74,7 +74,7 @@ public class Titre {
     ///Others Method
     public Society getSociety(DbConnect connection) throws Exception{
         MyReflection myFunction=new MyReflection();
-        Object[] societyList=myFunction.selectAllFromWithCondition("Society","data","idSociety like '"+this.getIdSociety()+"'", connection);
+        Object[] societyList=myFunction.selectAllFromWithCondition("Society","com.bourse.data","idSociety like '"+this.getIdSociety()+"'", connection);
         if(societyList.length==0){
             throw new Exception("Society not Found");
         }
