@@ -63,10 +63,10 @@ public class Titre {
     ///Constructors
 
     public Titre(String idTitre, String reference, String idSociety, String idClient) {
-        this.idTitre = idTitre;
-        this.reference = reference;
-        this.idSociety = idSociety;
-        this.idClient = idClient;
+        this.setIdTitre(idTitre);
+        this.setReference(reference);
+        this.setIdSociety(idSociety);
+        this.setIdClient(idClient);
     }
     public Titre() {
     }
