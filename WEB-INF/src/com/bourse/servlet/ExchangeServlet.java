@@ -16,7 +16,7 @@ public class ExchangeServlet extends HttpServlet{
         try {
             MyFunction myFunction=new MyFunction();
             Exchange[] exchange=myFunction.getExchangeTable(connection);
-
+            
         } catch (Exception e) {
             
         }
