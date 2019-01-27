@@ -3,6 +3,7 @@ import java.lang.reflect.*;
 import java.sql.*;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Locale;
 public class MyReflection {
 	 // Upper the first char
@@ -165,11 +166,10 @@ public class MyReflection {
         try{
             // System.out.println(queryInsert);
             insertion=connexion.getStatement().executeUpdate(queryInsert);
-            connexion.commit(); 
-
+         
         }
         catch(Exception e){            
-            connexion.rollback();
+          
             throw e;
         }
        
@@ -458,13 +458,18 @@ public class MyReflection {
         String[] temp=date.split(" ",2);
         return Date.valueOf(temp[0]);
     }
-    
+    public Timestamp getTimestampNow(DbConnect connection)throws Exception{
+        String sql="select sysdate from dual";
+        ResultSet dateBase=connection.getStatement().executeQuery(sql);
+        String date="";
+        while(dateBase.next()){
+            date+=dateBase.getString(1);
+        }
+        return Timestamp.valueOf(date);
+    }
     public ArrayList find(Object[] listeObject,String attribut,String operation,String condition)throws Exception{
         ArrayList resultObject=new ArrayList();
-        ArrayList listeObjectVect=new ArrayList();
-        for(int i=0;i<listeObject.length;i++){
-            listeObjectVect.add(listeObject[i]);
-        }
+        ArrayList listeObjectVect=new ArrayList(Arrays.asList(listeObject));
         for(int i=0;i<listeObjectVect.size();i++){
             Method getAttribut=this.getGettersOf(listeObjectVect.get(i),attribut);
             Field specificField=this.getSpecificField(listeObjectVect.get(i),attribut);
@@ -533,7 +538,7 @@ public class MyReflection {
                     }
                 }
             }
-        // listeObject=listeObjectVect.toArray();
+        listeObject=listeObjectVect.toArray();
         return resultObject;
     }
 
@@ -646,10 +651,8 @@ public class MyReflection {
         // System.out.print(sqlUpdate);
         try{
             lineUpdate=connexion.getStatement().executeUpdate(sqlUpdate);
-            connexion.commit();
         }
         catch(Exception e){
-            connexion.rollback();
             throw new Exception("Update could not be Etablishe");
         }
         finally{

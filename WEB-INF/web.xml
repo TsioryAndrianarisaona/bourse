@@ -4,13 +4,13 @@
     <display-name>ServletTutorial</display-name>
 
     <servlet>
-        <servlet-name>helloServlet</servlet-name>
-        <servlet-class>org.o7planning.tutorial.servlet.HelloServlet</servlet-class>
+        <servlet-name>Exchange</servlet-name>
+        <servlet-class>com.bourse.servlet.ExchangeServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>helloServlet</servlet-name>
-        <url-pattern>/hello</url-pattern>
+        <servlet-name>Exchange</servlet-name>
+        <url-pattern></url-pattern>
     </servlet-mapping>
 
     

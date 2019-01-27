@@ -5,7 +5,7 @@ public class OrderPursache {
     ///Attributes
     private String idOrderPursache;
     private Timestamp dateStart;
-    private double quantity;
+    private int quantity;
     private double price;
     private String idBroker;
     private String idSociety;
@@ -29,11 +29,11 @@ public class OrderPursache {
         this.dateStart = dateStart;
     }
 
-    public double getQuantity() {
+    public int getQuantity() {
         return this.quantity;
     }
 
-    public void setQuantity(double quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
@@ -87,7 +87,7 @@ public class OrderPursache {
         return this;
     }
 
-    public OrderPursache quantity(double quantity) {
+    public OrderPursache quantity(int quantity) {
         this.quantity = quantity;
         return this;
     }
@@ -119,7 +119,7 @@ public class OrderPursache {
 
     ///Constructor
 
-    public OrderPursache(String idOrderPursache, Timestamp dateStart, double quantity, double price, String idBroker, String idSociety, String idClient, int states) {
+    public OrderPursache(String idOrderPursache, Timestamp dateStart, int quantity, double price, String idBroker, String idSociety, String idClient, int states) {
         this.setIdOrderPursache(idOrderPursache);
         this.setDateStart(dateStart);
         this.setQuantity(quantity);
